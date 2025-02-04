@@ -213,6 +213,7 @@ function getUserCoordinates(){
     navigator.geolocation.getCurrentPosition(position =>  {
       let {latitude, longitude} = position.coords;
       let REVERSE_GEOCODING_URL = `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${api_key}`;
+      let AIR_POLLUTION_URL = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${latitude}&lon=${longitude}&appid=${api_key}`;
 
       fetch(REVERSE_GEOCODING_URL).then(res => res.json()).then(data => {
           let {name, country, state} = data[0];
